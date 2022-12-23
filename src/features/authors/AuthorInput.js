@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { v4 as uuid } from "uuid";
 import { useDispatch } from "react-redux";
-import { addAuthor } from "./booksSlice";
+import { addAuthor } from "./authorsSlice";
 
 function AuthorInput() {
   const [authorName, setAuthorName] = useState("");
@@ -13,7 +13,10 @@ function AuthorInput() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    const author = { authorName, id: uuid() };
+    const author = {
+      authorName,
+      id: uuid(),
+    };
     dispatch(addAuthor(author));
     setAuthorName("");
   }
@@ -28,7 +31,7 @@ function AuthorInput() {
           value={authorName}
           placeholder="author name"
         />
-      </p>
+      </p>{" "}
       <input type="submit" />
     </form>
   );
